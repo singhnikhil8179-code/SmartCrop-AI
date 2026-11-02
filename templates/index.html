@@ -1,0 +1,153 @@
+
+{% extends "base.html" %}
+
+{% block title %}SmartCrop AI | Smart Crop Recommendation{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero p-4 p-lg-5 rounded-4">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+            <span class="eyebrow">SMART AGRICULTURE · MACHINE LEARNING</span>
+
+            <h1 class="display-5 fw-bold mt-3">
+                Grow smarter with AI-powered crop recommendations.
+            </h1>
+
+            <p class="lead mt-3">
+                Make informed crop selection decisions using soil nutrients
+                and climate conditions. Our Machine Learning system analyses
+                your inputs and suggests suitable crops.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 mt-4">
+                <a href="{{ url_for('recommend') }}"
+                   class="btn btn-success btn-lg">
+                    Get Crop Recommendation →
+                </a>
+
+                <a href="{{ url_for('about') }}"
+                   class="btn btn-outline-success btn-lg">
+                    Explore Project
+                </a>
+            </div>
+
+            <p class="small text-muted mt-3 mb-0">
+                An academic decision-support project. Always verify
+                recommendations with local agricultural experts.
+            </p>
+        </div>
+
+        <div class="col-lg-5">
+            <div class="hero-art">
+                🌾
+                <span>🌱</span>
+                <span>☀️</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feature Cards -->
+<section class="my-5">
+    <div class="text-center mb-4">
+        <span class="eyebrow">OUR CAPABILITIES</span>
+        <h2 class="fw-bold mt-2">Smart farming starts with better decisions</h2>
+        <p class="text-muted">
+            Explore the key capabilities of SmartCrop AI.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="stat-icon">🧪</div>
+                <h5>Soil Analysis</h5>
+                <p>
+                    Analyse Nitrogen, Phosphorus, Potassium and soil pH
+                    to understand important soil characteristics.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="stat-icon">🌦️</div>
+                <h5>Climate Analysis</h5>
+                <p>
+                    Use temperature, humidity and rainfall values
+                    to evaluate crop suitability patterns.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="stat-card">
+                <div class="stat-icon">🤖</div>
+                <h5>Machine Learning</h5>
+                <p>
+                    Generate crop predictions using a trained
+                    Machine Learning classification model.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="card border-0 shadow-sm p-4 p-lg-5 mb-5">
+    <div class="text-center mb-4">
+        <span class="eyebrow">SIMPLE PROCESS</span>
+        <h2 class="fw-bold mt-2">How SmartCrop AI works</h2>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="text-success fw-bold mb-2">STEP 01</div>
+            <h5>Enter your data</h5>
+            <p class="text-muted mb-0">
+                Provide soil nutrient and climate information
+                through the recommendation form.
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            <div class="text-success fw-bold mb-2">STEP 02</div>
+            <h5>AI analyses inputs</h5>
+            <p class="text-muted mb-0">
+                The trained model processes the seven input
+                parameters and predicts suitable crop classes.
+            </p>
+        </div>
+
+        <div class="col-md-4">
+            <div class="text-success fw-bold mb-2">STEP 03</div>
+            <h5>View recommendations</h5>
+            <p class="text-muted mb-0">
+                Review the predicted crops and their model scores
+                to support your crop selection.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="text-center p-4 p-lg-5 rounded-4 mb-4"
+         style="background:#eaf5ed;">
+    <h2 class="fw-bold">Ready to explore smarter farming?</h2>
+    <p class="text-muted mt-2">
+        Enter your soil and climate details to generate a crop recommendation.
+    </p>
+
+    <a href="{{ url_for('recommend') }}"
+       class="btn btn-success btn-lg mt-2">
+        Start Recommendation →
+    </a>
+</section>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Crop Recommendation{% endblock %}
+{% block content %}
+<div class="page-heading"><span class="eyebrow">CROP ADVISORY</span><h1 class="h2 fw-bold mt-2">Enter your field conditions</h1><p class="text-muted">Use recent soil-test values and local weather information. All fields are required.</p></div>
+<form method="post" class="card border-0 shadow-sm p-4" id="cropForm">
+  <div class="row g-3">
+    {% set fields = [
+      ('N','Nitrogen (N)','kg/ha','90','0','200'),
+      ('P','Phosphorus (P)','kg/ha','42','0','200'),
+      ('K','Potassium (K)','kg/ha','43','0','250'),
+      ('temperature','Temperature','°C','25','-5','60'),
+      ('humidity','Relative humidity','%','80','0','100'),
+      ('ph','Soil pH','pH','6.5','0','14'),
+      ('rainfall','Rainfall','mm','200','0','1000')
+    ] %}
+    {% for key,label,unit,placeholder,minv,maxv in fields %}
+    <div class="col-md-6">
+      <label class="form-label fw-semibold" for="{{ key }}">{{ label }} <span class="text-muted fw-normal">({{ unit }})</span></label>
+      <input class="form-control form-control-lg" type="number" step="any" id="{{ key }}" name="{{ key }}" placeholder="{{ placeholder }}" min="{{ minv }}" max="{{ maxv }}" required>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="form-text mt-3">Input limits are broad validation limits, not agronomic recommendations. Values outside the dataset's observed range may produce unreliable predictions.</div>
+  <button class="btn btn-success btn-lg mt-4" type="submit">🌱 Recommend crops</button>
+</form>
+{% endblock %}

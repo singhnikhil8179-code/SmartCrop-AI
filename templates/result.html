@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Recommendation Results{% endblock %}
+{% block content %}
+<div class="page-heading"><span class="eyebrow">MODEL OUTPUT</span><h1 class="h2 fw-bold mt-2">Your crop suggestions</h1><p class="text-muted">Predictions are based on the values submitted.</p></div>
+<div class="card result-primary border-0 shadow-sm p-4 mb-4">
+  <div class="small text-uppercase fw-bold opacity-75">Top predicted crop</div>
+  <div class="display-5 fw-bold">{{ ranked[0].crop }}</div>
+  <div class="mt-2">Model score: <b>{{ ranked[0].confidence }}%</b></div>
+  <div class="progress mt-2" role="progressbar" aria-valuenow="{{ ranked[0].confidence }}" aria-valuemin="0" aria-valuemax="100"><div class="progress-bar bg-light" style="width: {{ ranked[0].confidence }}%"></div></div>
+</div>
+<div class="row g-3">
+{% for item in ranked %}
+<div class="col-md-4"><div class="card border-0 shadow-sm p-3 h-100">
+  <div class="text-muted small">Suggestion {{ loop.index }}</div><h3 class="h4 mt-2">{{ item.crop }}</h3>
+  <div class="fw-semibold">{{ item.confidence }}% model score</div>
+  <div class="progress mt-2"><div class="progress-bar bg-success" style="width: {{ item.confidence }}%"></div></div>
+</div></div>
+{% endfor %}
+</div>
+<div class="card border-0 shadow-sm p-4 mt-4">
+  <h2 class="h5">Submitted field values</h2>
+  <div class="row">
+  {% for key,value in values.items() %}
+    <div class="col-6 col-md-3 py-2"><span class="text-muted small">{{ key }}</span><div class="fw-semibold">{{ "%.2f"|format(value) }}</div></div>
+  {% endfor %}
+  </div>
+  <a class="btn btn-outline-success mt-3 align-self-start" href="{{ url_for('recommend') }}">Try another prediction</a>
+</div>
+<div class="alert alert-warning mt-4"><b>Important:</b> These percentages are model class scores, not guaranteed probabilities of successful harvest or yield. This prototype does not account for all local factors such as soil texture, season, irrigation, pests, market prices or district-level agronomy. Verify decisions with a local Krishi Vigyan Kendra or agriculture officer.</div>
+{% endblock %}
