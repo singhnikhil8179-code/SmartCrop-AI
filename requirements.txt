@@ -11,3 +11,4 @@ seaborn==0.13.2
 requests==2.32.4
 gunicorn
 psycopg2-binary
+psycopg[binary]
